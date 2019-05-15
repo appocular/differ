@@ -21,7 +21,7 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-// $app->withFacades();
+$app->withFacades();
 
 // $app->withEloquent();
 
@@ -79,6 +79,7 @@ $app->singleton(
 // $app->register(Appocular\Differ\Providers\AppServiceProvider::class);
 // $app->register(Appocular\Differ\Providers\AuthServiceProvider::class);
 // $app->register(Appocular\Differ\Providers\EventServiceProvider::class);
+$app->register(Appocular\Clients\AssessorServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

@@ -1,0 +1,36 @@
+FORMAT: 1A
+
+# Differ
+
+Differ is the visual difference engine of Appocular. Assessor submits
+requests and Differ reports the result back.
+
+Assessor only submits image Keeper IDs, Differ fetches them from
+Keeper as needed, and stores diff images in Keeper too.
+
+## Diff resource [/diff]
+
+## Create diff [POST]
+
+Request a diff.
+
++ Request (application/json)
+
+        {
+            "image_kid": "09dfb28173f58f2052c7780965a0d15d0513ef4f",
+            "baseline_kid": "893ad2d85ff62b3fe5a64cd04a686abfe9f910f7"
+        }
+
++ Response 200 (text/plain;charset=UTF-8)
+
++ Request Bad request (application/json)
+
+        {
+            "image_kid": "09dfb28173f58f2052c7780965a0d15d0513ef4f",
+        }
+
++ Response 422 (application/json)
+
+        {
+            "baseline_kid": ["The baseline_sha field is required."]
+        }
