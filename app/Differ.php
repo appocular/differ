@@ -61,7 +61,8 @@ class Differ
             $process->run();
 
             $pixelCount = trim($process->getErrorOutput());
-            if (!preg_match('/^\d+$/', $pixelCount)) {
+            // compare might return a number in scientific notation.
+            if (!preg_match('/^[\d.e+]+$/', $pixelCount)) {
                 throw new RuntimeException('Unexpected output from compare: ' . $pixelCount);
             }
             $different = $pixelCount > 0;
