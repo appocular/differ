@@ -44,6 +44,6 @@ class DiffRequest extends Job
             DB::table('diffs')->updateOrInsert((array) $diff);
         }
 
-        app(Assessor::class)->reportDiff($diff);
+        app(Assessor::class)->reportDiff($diff->image_kid, $diff->baseline_kid, $diff->diff_kid, $diff->different);
     }
 }

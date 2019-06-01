@@ -17,9 +17,8 @@ class DiffRequestTest extends TestCase
      */
     public function testReportKnown()
     {
-        $diff = new Diff('image id', 'baseline id', 'diff id', true);
         $assessor = $this->prophesize(Assessor::class);
-        $assessor->reportDiff($diff)->shouldBeCalled();
+        $assessor->reportDiff('image id', 'baseline id', 'diff id', true)->shouldBeCalled();
 
         app()->instance(Assessor::class, $assessor->reveal());
         DB::table('diffs')->insert([
@@ -38,6 +37,11 @@ class DiffRequestTest extends TestCase
      */
     public function testGenerating()
     {
+        $assessor = $this->prophesize(Assessor::class);
+        $assessor->reportDiff('image id', 'baseline id', 'diff id', true)->shouldBeCalled();
+
+        app()->instance(Assessor::class, $assessor->reveal());
+
         $diff = new Diff('image id', 'baseline id', 'diff id', true);
         $differ = $this->prophesize(Differ::class);
         $differ->diff('image id', 'baseline id')->willReturn($diff)->shouldBeCalled();

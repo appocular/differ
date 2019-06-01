@@ -2,8 +2,9 @@
 
 namespace Appocular\Differ;
 
-use Appocular\Differ\Diff;
 use Appocular\Clients\Contracts\Keeper;
+use Appocular\Differ\Diff;
+use Illuminate\Support\Facades\Log;
 use RuntimeException;
 use Symfony\Component\Process\Process;
 use Throwable;
