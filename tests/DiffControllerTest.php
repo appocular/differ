@@ -12,8 +12,8 @@ class DiffControllerTest extends TestCase
     {
         Queue::fake();
         $this->json('POST', '/diff', [
-            'image_kid' => 'kid1',
-            'baseline_kid' => 'kid2',
+            'image_url' => 'url1',
+            'baseline_url' => 'url2',
         ]);
 
         $this->assertResponseStatus(200);
@@ -27,7 +27,7 @@ class DiffControllerTest extends TestCase
     {
         Queue::fake();
         $this->json('POST', '/diff', [
-            'image_kid' => 'kid1',
+            'image_url' => 'url1',
         ]);
 
         $this->assertResponseStatus(422);

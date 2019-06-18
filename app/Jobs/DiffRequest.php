@@ -13,17 +13,17 @@ class DiffRequest extends Job
     /**
      * @var string
      */
-    public $image_kid;
+    public $image_url;
 
     /**
      * @var string
      */
-    public $baseline_kid;
+    public $baseline_url;
 
-    public function __construct(string $image_kid, string $baseline_kid)
+    public function __construct(string $image_url, string $baseline_url)
     {
-        $this->image_kid = $image_kid;
-        $this->baseline_kid = $baseline_kid;
+        $this->image_url = $image_url;
+        $this->baseline_url = $baseline_url;
     }
 
     /**
@@ -34,16 +34,16 @@ class DiffRequest extends Job
     public function handle()
     {
         $diff = DB::table('diffs')
-            ->where(['image_kid' => $this->image_kid, 'baseline_kid' => $this->baseline_kid])
+            ->where(['image_url' => $this->image_url, 'baseline_url' => $this->baseline_url])
             ->first();
 
         if ($diff) {
-            $diff = new Diff($diff->image_kid, $diff->baseline_kid, $diff->diff_kid, $diff->different);
+            $diff = new Diff($diff->image_url, $diff->baseline_url, $diff->diff_url, $diff->different);
         } else {
-            $diff = app(Differ::class)->diff($this->image_kid, $this->baseline_kid);
+            $diff = app(Differ::class)->diff($this->image_url, $this->baseline_url);
             DB::table('diffs')->updateOrInsert((array) $diff);
         }
 
-        app(Assessor::class)->reportDiff($diff->image_kid, $diff->baseline_kid, $diff->diff_kid, $diff->different);
+        app(Assessor::class)->reportDiff($diff->image_url, $diff->baseline_url, $diff->diff_url, $diff->different);
     }
 }

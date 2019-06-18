@@ -16,16 +16,16 @@ class DifferTest extends TestCase
     {
         $diff_image = null;
         $keeper = $this->prophesize(Keeper::class);
-        $keeper->get('kid1')->willReturn(file_get_contents(__DIR__ . '/../fixtures/a.png'))->shouldBeCalled();
-        $keeper->get('kid2')->willReturn(file_get_contents(__DIR__ . '/../fixtures/b.png'))->shouldBeCalled();
+        $keeper->get('url1')->willReturn(file_get_contents(__DIR__ . '/../fixtures/a.png'))->shouldBeCalled();
+        $keeper->get('url2')->willReturn(file_get_contents(__DIR__ . '/../fixtures/b.png'))->shouldBeCalled();
         $keeper->store(Argument::any())->will(function ($image) use (&$diff_image) {
             $diff_image = $image;
-            return 'diffkid';
+            return 'diffurl';
         })->shouldBeCalled();
 
         $differ = new Differ($keeper->reveal());
-        $diff = $differ->diff('kid1', 'kid2');
-        $expected = new Diff('kid1', 'kid2', 'diffkid', 1);
+        $diff = $differ->diff('url1', 'url2');
+        $expected = new Diff('url1', 'url2', 'diffurl', 1);
         $this->assertEquals($expected, $diff);
         $this->assertNoDifference($diff_image, __DIR__ . '/../fixtures/a-b-diff.png');
     }
@@ -37,15 +37,15 @@ class DifferTest extends TestCase
     {
         $diff_image = null;
         $keeper = $this->prophesize(Keeper::class);
-        $keeper->get('kid1')->willReturn(file_get_contents(__DIR__ . '/../fixtures/a.png'))->shouldBeCalled();
+        $keeper->get('url1')->willReturn(file_get_contents(__DIR__ . '/../fixtures/a.png'))->shouldBeCalled();
         $keeper->store(Argument::any())->will(function ($image) use (&$diff_image) {
             $diff_image = $image;
-            return 'diffkid';
+            return 'diffurl';
         })->shouldBeCalled();
 
         $differ = new Differ($keeper->reveal());
-        $diff = $differ->diff('kid1', 'kid1');
-        $expected = new Diff('kid1', 'kid1', 'diffkid', 0);
+        $diff = $differ->diff('url1', 'url1');
+        $expected = new Diff('url1', 'url1', 'diffurl', 0);
         $this->assertEquals($expected, $diff);
         $this->assertNoDifference($diff_image, __DIR__ . '/../fixtures/a-a-diff.png');
     }

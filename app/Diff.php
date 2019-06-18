@@ -9,21 +9,21 @@ class Diff
      *
      * @var string
      */
-    public $image_kid;
+    public $image_url;
 
     /**
      * Baseline image Keeper ID.
      *
      * @var string
      */
-    public $baseline_kid;
+    public $baseline_url;
 
     /**
      * Diff image Keeper ID.
      *
      * @var string|null
      */
-    public $diff_kid;
+    public $diff_url;
 
     /**
      * Difference detected.
@@ -35,11 +35,11 @@ class Diff
     /**
      * Create new diff.
      */
-    public function __construct(string $image_kid, string $baseline_kid, $diff_kid, bool $different)
+    public function __construct(string $image_url, string $baseline_url, $diff_url, bool $different)
     {
-        $this->image_kid = $image_kid;
-        $this->baseline_kid = $baseline_kid;
-        $this->diff_kid = $diff_kid;
+        $this->image_url = $image_url;
+        $this->baseline_url = $baseline_url;
+        $this->diff_url = $diff_url;
         $this->different = $different;
     }
 }

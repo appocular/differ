@@ -14,11 +14,11 @@ class DiffController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'image_kid' => 'required|string|min:1|max:255',
-            'baseline_kid' => 'required|string|min:1|max:255',
+            'image_url' => 'required|string|min:1|max:255',
+            'baseline_url' => 'required|string|min:1|max:255',
         ]);
 
-        dispatch(new DiffRequest($request->input('image_kid'), $request->input('baseline_kid')));
+        dispatch(new DiffRequest($request->input('image_url'), $request->input('baseline_url')));
         // Always return success.
         return new Response();
     }

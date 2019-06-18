@@ -21,12 +21,12 @@ class Differ
         $this->keeper = $keeper;
     }
 
-    public function diff(string $imageKid, string $baselineKid) : Diff
+    public function diff(string $imageUrl, string $baselineUrl) : Diff
     {
         $different = false;
-        $diffKid = '';
-        $image = $this->keeper->get($imageKid);
-        $baseline = $this->keeper->get($baselineKid);
+        $diffUrl = '';
+        $image = $this->keeper->get($imageUrl);
+        $baseline = $this->keeper->get($baselineUrl);
 
         // Temporary work directory. Stackoverflow has a lot of complicated
         // solutions on how to create a temporary directory, all with
@@ -86,7 +86,7 @@ class Differ
                 'diff.png',
             ]))->mustRun();
 
-            $diffKid = $this->keeper->store(file_get_contents('diff.png'));
+            $diffUrl = $this->keeper->store(file_get_contents('diff.png'));
         } finally {
             chdir($oldCwd);
             // This wont clean up in all error cases, but /tmp will be cleaned
@@ -94,7 +94,7 @@ class Differ
             $this->removeDir($dir);
         }
 
-        return new Diff($imageKid, $baselineKid, $diffKid, $different);
+        return new Diff($imageUrl, $baselineUrl, $diffUrl, $different);
     }
 
     /**

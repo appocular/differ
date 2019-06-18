@@ -22,9 +22,9 @@ class DiffRequestTest extends TestCase
 
         app()->instance(Assessor::class, $assessor->reveal());
         DB::table('diffs')->insert([
-            'image_kid' => 'image id',
-            'baseline_kid' => 'baseline id',
-            'diff_kid' => 'diff id',
+            'image_url' => 'image id',
+            'baseline_url' => 'baseline id',
+            'diff_url' => 'diff id',
             'different' => true,
         ]);
 
@@ -51,9 +51,9 @@ class DiffRequestTest extends TestCase
         $job->handle();
 
         $this->seeInDatabase('diffs', [
-            'image_kid' => 'image id',
-            'baseline_kid' => 'baseline id',
-            'diff_kid' => 'diff id',
+            'image_url' => 'image id',
+            'baseline_url' => 'baseline id',
+            'diff_url' => 'diff id',
             'different' => true,
         ]);
     }
