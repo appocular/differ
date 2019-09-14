@@ -15,6 +15,6 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group([], function () use ($router) {
+$router->group(['middleware' => 'auth:shared_token'], function () use ($router) {
     $router->post('diff', 'DiffController@create');
 });

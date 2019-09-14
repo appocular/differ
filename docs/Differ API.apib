@@ -14,12 +14,20 @@ Keeper as needed, and stores diff images in Keeper too.
 
 Request a diff.
 
+Requires athentication with shared token.
+
 + Request (application/json)
 
-        {
-            "image_url": "09dfb28173f58f2052c7780965a0d15d0513ef4f",
-            "baseline_url": "893ad2d85ff62b3fe5a64cd04a686abfe9f910f7"
-        }
+    + Headers
+
+            Authorization: Bearer MySharedToken
+
+    + Body
+
+            {
+                "image_url": "09dfb28173f58f2052c7780965a0d15d0513ef4f",
+                "baseline_url": "893ad2d85ff62b3fe5a64cd04a686abfe9f910f7"
+            }
 
 + Response 200 (text/plain;charset=UTF-8)
 
@@ -34,3 +42,14 @@ Request a diff.
         {
             "baseline_url": ["The baseline_url field is required."]
         }
+
++ Request invalid token (application/json)
+
+    + Body
+
+            {
+                "image_url": "09dfb28173f58f2052c7780965a0d15d0513ef4f",
+                "baseline_url": "893ad2d85ff62b3fe5a64cd04a686abfe9f910f7"
+            }
+
++ Response 401 (text/plain;charset=UTF-8)

@@ -61,9 +61,9 @@ $app->singleton(
 //     Appocular\Differ\Http\Middleware\ExampleMiddleware::class
 // ]);
 
-// $app->routeMiddleware([
-//     'auth' => Appocular\Differ\Http\Middleware\Authenticate::class,
-// ]);
+$app->routeMiddleware([
+    'auth' => Appocular\Differ\Http\Middleware\Authenticate::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -77,7 +77,7 @@ $app->singleton(
 */
 
 // $app->register(Appocular\Differ\Providers\AppServiceProvider::class);
-// $app->register(Appocular\Differ\Providers\AuthServiceProvider::class);
+$app->register(Appocular\Differ\Providers\AuthServiceProvider::class);
 // $app->register(Appocular\Differ\Providers\EventServiceProvider::class);
 $app->register(Appocular\Clients\AssessorServiceProvider::class);
 $app->register(Appocular\Clients\KeeperServiceProvider::class);
