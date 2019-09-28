@@ -49,7 +49,7 @@ class Differ
                 '-dissimilarity-threshold',
                 '1',
                 '-fuzz',
-                '1',
+                '4%',
                 '-metric',
                 'AE',
                 '-highlight-color',
