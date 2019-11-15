@@ -59,6 +59,7 @@ class Differ
                 'diff.png',
             ]);
 
+            $process->setTimeout(600);
             $process->run();
 
             $pixelCount = trim($process->getErrorOutput());
@@ -84,7 +85,7 @@ class Differ
                 'DstOut',
                 '-composite',
                 'diff.png',
-            ]))->mustRun();
+            ]))->setTimeout(600)->mustRun();
 
             $diffUrl = $this->keeper->store(file_get_contents('diff.png'));
         } finally {
