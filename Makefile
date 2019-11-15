@@ -6,10 +6,10 @@ test: test-unit
 
 .PHONY: fixtures
 fixtures:
-    compare -verbose -dissimilarity-threshold 1 -fuzz 4% -metric AE -highlight-color blue a.png a.png a-a-diff.png
-    convert a-a-diff.png -matte \( +clone -fuzz 1% -transparent blue \) -compose DstOut -composite a-a-diff.png
-    compare -verbose -dissimilarity-threshold 1 -fuzz 4% -metric AE -highlight-color blue a.png b.png a-b-diff.png
-    convert a-b-diff.png -matte \( +clone -fuzz 1% -transparent blue \) -compose DstOut -composite a-b-diff.png
+	compare -verbose -dissimilarity-threshold 1 -fuzz 4% -metric AE -highlight-color blue a.png a.png a-a-diff.png
+	convert a-a-diff.png -matte \( +clone -fuzz 1% -transparent blue \) -compose DstOut -composite a-a-diff.png
+	compare -verbose -dissimilarity-threshold 1 -fuzz 4% -metric AE -highlight-color blue a.png b.png a-b-diff.png
+	convert a-b-diff.png -matte \( +clone -fuzz 1% -transparent blue \) -compose DstOut -composite a-b-diff.png
 
 .PHONY: test-unit
 test-unit:
