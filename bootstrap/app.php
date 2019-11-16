@@ -1,9 +1,13 @@
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
+// phpcs:disable SlevomatCodingStandard.Namespaces.FullyQualifiedGlobalFunctions.NonFullyQualified
+
+declare(strict_types=1);
+
+require_once __DIR__ . '/../vendor/autoload.php';
 
 (new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
-    dirname(__DIR__)
+    dirname(__DIR__),
 ))->bootstrap();
 
 /*
@@ -18,7 +22,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 */
 
 $app = new Laravel\Lumen\Application(
-    dirname(__DIR__)
+    dirname(__DIR__),
 );
 
 $app->withFacades();
@@ -38,12 +42,12 @@ $app->withFacades();
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    Appocular\Differ\Exceptions\Handler::class
+    Appocular\Differ\Exceptions\Handler::class,
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    Appocular\Differ\Console\Kernel::class
+    Appocular\Differ\Console\Kernel::class,
 );
 
 /*
@@ -58,7 +62,7 @@ $app->singleton(
 */
 
 $app->middleware([
-    Fideloper\Proxy\TrustProxies::class
+    Fideloper\Proxy\TrustProxies::class,
 ]);
 
 $app->routeMiddleware([
@@ -94,8 +98,9 @@ $app->register(Fideloper\Proxy\TrustedProxyServiceProvider::class);
 
 $app->router->group([
     'namespace' => 'Appocular\Differ\Http\Controllers',
-], function ($router) {
-    require __DIR__.'/../routes/web.php';
+    // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
+], static function ($router): void {
+    require __DIR__ . '/../routes/web.php';
 });
 
 return $app;
