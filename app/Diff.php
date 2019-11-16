@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Appocular\Differ;
 
 class Diff
@@ -35,7 +37,7 @@ class Diff
     /**
      * Create new diff.
      */
-    public function __construct(string $image_url, string $baseline_url, $diff_url, bool $different)
+    public function __construct(string $image_url, string $baseline_url, string $diff_url, bool $different)
     {
         $this->image_url = $image_url;
         $this->baseline_url = $baseline_url;
