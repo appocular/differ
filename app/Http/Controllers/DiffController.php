@@ -7,6 +7,7 @@ namespace Appocular\Differ\Http\Controllers;
 use Appocular\Differ\Jobs\DiffRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Laravel\Lumen\Routing\Controller;
 
 class DiffController extends Controller
 {
