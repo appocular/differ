@@ -1,8 +1,12 @@
 .PHONY: docs
 docs: docs/Differ\ API.html
 
+.PHONEY: phpcs
+phpcs:
+	./vendor/bin/phpcs
+
 .PHONY: test
-test: test-unit
+test: test-unit phpcs
 
 .PHONY: fixtures
 fixtures:

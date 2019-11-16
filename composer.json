@@ -12,6 +12,7 @@
         "symfony/process": "^4.2"
     },
     "require-dev": {
+        "appocular/coding-standard": "dev-master",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "phpunit/phpcov": "^6.0",
@@ -48,6 +49,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/appocular/clients-laravel.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/appocular/coding-standard"
         }
     ]
 }
