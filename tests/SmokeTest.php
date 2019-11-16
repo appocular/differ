@@ -1,9 +1,9 @@
 <?php
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
-use Laravel\Lumen\Testing\DatabaseTransactions;
+declare(strict_types=1);
 
-// phpcs:ignore PSR1.Classes.ClassDeclaration.MissingNamespace
+namespace Appocular\Differ;
+
 class SmokeTest extends TestCase
 {
     /**
@@ -11,13 +11,13 @@ class SmokeTest extends TestCase
      *
      * @return void
      */
-    public function testAppReportsVersion()
+    public function testAppReportsVersion(): void
     {
         $this->get('/');
 
         $this->assertEquals(
             $this->app->version(),
-            $this->response->getContent()
+            $this->response->getContent(),
         );
     }
 }

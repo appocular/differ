@@ -1,5 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
+// We cannot bind instances to a static closure.
+// phpcs:disable SlevomatCodingStandard.Functions.StaticClosure.ClosureNotStatic
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -15,6 +20,6 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['middleware' => 'auth:shared_token'], function () use ($router) {
+$router->group(['middleware' => 'auth:shared_token'], function () use ($router): void {
     $router->post('diff', 'DiffController@create');
 });

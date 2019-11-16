@@ -1,11 +1,16 @@
 <?php
 
-use Appocular\Differ\Jobs\DiffRequest;
+declare(strict_types=1);
 
-// phpcs:ignore PSR1.Classes.ClassDeclaration.MissingNamespace
+namespace Appocular\Differ\Http\Controllers;
+
+use Appocular\Differ\Jobs\DiffRequest;
+use Appocular\Differ\TestCase;
+use Illuminate\Support\Facades\Queue;
+
 class DiffControllerTest extends TestCase
 {
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         // Set up a shared token.
@@ -15,7 +20,7 @@ class DiffControllerTest extends TestCase
     /**
      * Test that a valid request without a token gets access denied.
      */
-    public function testAccess()
+    public function testAccess(): void
     {
         Queue::fake();
         $this->json('POST', '/diff', [
@@ -30,7 +35,7 @@ class DiffControllerTest extends TestCase
     /**
      * Test that a valid request creates a job and returns success.
      */
-    public function testPostingDiffs()
+    public function testPostingDiffs(): void
     {
         Queue::fake();
         $this->json('POST', '/diff', [
@@ -45,7 +50,7 @@ class DiffControllerTest extends TestCase
     /**
      * Test that a invalid request doesn't queue a job and returns error.
      */
-    public function testBadRequest()
+    public function testBadRequest(): void
     {
         Queue::fake();
         $this->json('POST', '/diff', [
