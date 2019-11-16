@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -11,7 +13,7 @@
 |
 */
 
-$factory->define(Appocular\Differ\User::class, function (Faker\Generator $faker) {
+$factory->define(Appocular\Differ\User::class, static function (Faker\Generator $faker): array {
     return [
         'name' => $faker->name,
         'email' => $faker->email,
