@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa4415ccae96a12c79ae382fb17a5ad4",
+    "content-hash": "af19a99d92a1fe1fd68a3d32c0a25715",
     "packages": [
         {
             "name": "appocular/clients-laravel",
@@ -3472,7 +3472,7 @@
     "packages-dev": [
         {
             "name": "appocular/coding-standard",
-            "version": "dev-master",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/appocular/coding-standard.git",
@@ -5444,8 +5444,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "appocular/clients-laravel": 20,
-        "appocular/coding-standard": 20
+        "appocular/clients-laravel": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
