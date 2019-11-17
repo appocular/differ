@@ -6,7 +6,7 @@
     "type": "project",
     "require": {
         "php": "^7.2",
-        "appocular/clients-laravel": "dev-master",
+        "appocular/clients-laravel": "^1",
         "fideloper/proxy": "^4.2",
         "laravel/lumen-framework": "^6.0",
         "symfony/process": "^4.2"
