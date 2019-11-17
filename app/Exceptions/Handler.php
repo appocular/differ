@@ -40,7 +40,9 @@ class Handler extends ExceptionHandler
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Exception  $exception
+     *
      * @return \Illuminate\Http\Response|\Illuminate\Http\JsonResponse
+     *
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
      */
     public function render($request, Exception $exception)
