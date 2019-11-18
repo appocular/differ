@@ -5,5 +5,5 @@ images in Keeper and reports the result to Assessor.
 
 [Documentation](docs/Differ%20API.apib)
 
-[![](https://github.com/appocular/keeper/workflows/Run%20checks%20and%20tests/badge.svg)](https://github.com/appocular/keeper/actions)
+[![](https://github.com/appocular/differ/workflows/Run%20checks%20and%20tests/badge.svg)](https://github.com/appocular/differ/actions)
 [![](https://img.shields.io/codecov/c/github/appocular/differ.svg)](https://codecov.io/gh/appocular/differ)
